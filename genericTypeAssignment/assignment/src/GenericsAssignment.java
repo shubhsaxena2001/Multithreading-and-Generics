@@ -2,19 +2,19 @@ import java.util.*;
 
 //Creating Generics class
 class Generics <T> {
-    ArrayList<T> li = new ArrayList<T>();
+    List<T> ls = new ArrayList<T>();
 
     Generics(ArrayList<T> li)
     {
-        this.li = li;
+        this.ls = li;
     }
 
-    void displayOutput()
+    void display()
     {
-        Iterator<T> idx = li.iterator();
-        while(idx.hasNext())
+        Iterator<T> itr = ls.iterator();
+        while(itr.hasNext())
         {
-            System.out.println(idx.next() + " ");
+            System.out.println(itr.next() + " ");
         }
         System.out.println();
     }
@@ -24,38 +24,38 @@ class Generics <T> {
 public class GenericsAssignment {
     public static void main(String[] args) {
 
-        ArrayList<Integer> li_1 = new ArrayList<Integer>();
-        li_1.add(22);
-        li_1.add(44);
-        li_1.add(66);
+    	ArrayList<Integer> list1 = new ArrayList<Integer>();
+        list1.add(1);
+        list1.add(2);
+        list1.add(3);
 
-        ArrayList<Float> li_2 = new ArrayList<Float>();
-        li_2.add(5.0f);
-        li_2.add(9.0f);
-        li_2.add(11.0f);
+        ArrayList<Float> list2 = new ArrayList<Float>();
+        list2.add(4.0f);
+        list2.add(5.0f);
+        list2.add(6.0f);
 
-        ArrayList<String> li_3 = new ArrayList<String>();
-        li_3.add("Manish");
-        li_3.add("Kumar");
-        li_3.add("Jha");
+        ArrayList<String> list3 = new ArrayList<String>();
+        list3.add("Sample");
+        list3.add("String");
+        list3.add("Output");
 
-        ArrayList<Double> li_4 = new ArrayList<Double>();
-        li_4.add(100.0);
-        li_4.add(99.0);
-        li_4.add(399.0);
+        ArrayList<Double> list4 = new ArrayList<Double>();
+        list4.add(7.0);
+        list4.add(8.0);
+        list4.add(399.0);
 
-        Generics<Integer> genA = new Generics<Integer>(li_1);
-        Generics<Float> genB = new Generics<Float>(li_2);
-        Generics<String> genC = new Generics<String>(li_3);
-        Generics<Double> genD = new Generics<Double>(li_4);
+        Generics<Integer> intGen = new Generics<Integer>(list1);
+        Generics<Float> floatGen = new Generics<Float>(list2);
+        Generics<String> strGen = new Generics<String>(list3);
+        Generics<Double> doubleGen = new Generics<Double>(list4);
 
-        System.out.println("The value of integer is: ");
-        genA.displayOutput();
-        System.out.println("The value of float is: ");
-        genB.displayOutput();
-        System.out.println("The value of string : ");
-        genC.displayOutput();
-        System.out.println("The value of double : ");
-        genD.displayOutput();
+        System.out.println("Integer value: ");
+        intGen.display();
+        System.out.println("Float value: ");
+        floatGen.display();
+        System.out.println("String value: ");
+        strGen.display();
+        System.out.println("Double value: ");
+        doubleGen.display();
     }
 }

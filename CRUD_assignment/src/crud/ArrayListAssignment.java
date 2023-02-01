@@ -2,78 +2,86 @@ package crud;
 import java.util.*;
 
 class Employee {
-    int employeeId;
-    String employeeName;
+    int empID;
+    String empName;
     double salary;
-    public Employee(int employeeId, String employeeName, double salary) {
+    
+    public Employee(int empID, String empName, double salary) {
         super();
-        this.employeeId = employeeId;
-        this.employeeName = employeeName;
+        this.empID = empID;
+        this.empName = empName;
         this.salary = salary;
     }
-    public int getEmployeeId() {
-        return employeeId;
+    
+    public int getEmpID() {
+        return empID;
     }
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
+    
+    public void setEmpID(int employeeId) {
+        this.empID = employeeId;
     }
-    public String getEmployeeName() {
-        return employeeName;
+    
+    public String getEmpName() {
+        return empName;
     }
-    public void setEmployeeName(String employeeName) {
-        this.employeeName = employeeName;
+    
+    public void setEmpName(String employeeName) {
+        this.empName = employeeName;
     }
+    
     public double getSalary() {
         return salary;
     }
+    
     public void setSalary(double salary) {
         this.salary = salary;
     }
+    
 }
 
 public class ArrayListAssignment {
 
-    ArrayList<Employee> employeesData;
+    List<Employee> empRecord = new ArrayList<Employee>();
 
     ArrayListAssignment()
     {
-        this.employeesData = new ArrayList<Employee>();
+        this.empRecord = new ArrayList<Employee>();
     }
 
     void insert(Scanner sc)
     {
-        System.out.println("Enter id : ");
+        System.out.println("Enter Employee ID : ");
         int id = sc.nextInt();
-        System.out.println("Enter name : ");
+        System.out.println("Enter Employee Name : ");
         String name = sc.next();
-        System.out.println("Enter salary : ");
+        System.out.println("Enter Employee Salary : ");
         double salary = sc.nextDouble();
         Employee e = new Employee(id, name, salary);
-        employeesData.add(e);
+        empRecord.add(e);
         System.out.println("Added successfully.");
     }
 
     void display(Scanner sc)
     {
-        for(Employee e : employeesData)
+        for(Employee emp : empRecord)
         {
-            System.out.println("Employee ID : " + e.getEmployeeId());
-            System.out.println("Employee Name : " + e.getEmployeeName());
-            System.out.println("Salary : " + e.getSalary());
+            System.out.println("Employee ID : " + emp.getEmpID());
+            System.out.println("Employee Name : " + emp.getEmpName());
+            System.out.println("Employee Salary : " + emp.getSalary());
         }
     }
 
     void search(Scanner sc)
     {
-        System.out.println("Enter id : ");
+        System.out.println("Enter Employee id : ");
         int id = sc.nextInt();
-        for(Employee e : employeesData)
+        for(Employee emp : empRecord)
         {
-            if(e.getEmployeeId() == id)
+            if(emp.getEmpID() == id)
             {
-                System.out.println("Employee ID : " + e.getEmployeeId());
-                System.out.println("Employee Name : " + e.getEmployeeName());
-                System.out.println("Salary : " + e.getSalary());
+                System.out.println("Employee ID : " + emp.getEmpID());
+                System.out.println("Employee Name : " + emp.getEmpName());
+                System.out.println("Employee Salary : " + emp.getSalary());
                 return;
             }
         }
@@ -82,65 +90,64 @@ public class ArrayListAssignment {
 
     void delete(Scanner sc)
     {
-        System.out.println("Enter id : ");
+        System.out.println("Enter Employee ID : ");
         int id = sc.nextInt();
-        for(Employee e : employeesData)
+        for(Employee emp : empRecord)
         {
-            if(e.getEmployeeId() == id)
+            if(emp.getEmpID() == id)
             {
-                employeesData.remove(e);
+                empRecord.remove(emp);
                 System.out.println("Deleted successfully.");
                 return;
             }
         }
-        System.out.println("Id not found.");
+        System.out.println("ID not found.");
     }
 
     void update(Scanner sc)
     {
-        System.out.println("Enter id : ");
+        System.out.println("Enter Employee ID : ");
         int id = sc.nextInt();
-        for(Employee e : employeesData)
+        for(Employee emp : empRecord)
         {
-            if(e.getEmployeeId() == id)
+            if(emp.getEmpID() == id)
             {
                 System.out.println("Enter Name : ");
-                e.setEmployeeName(sc.next());
+                emp.setEmpName(sc.next());
                 System.out.println("Enter Salary : ");
-                e.setSalary(sc.nextDouble());
+                emp.setSalary(sc.nextDouble());
                 System.out.println("Updated Successfully.");
                 return;
             }
         }
-        System.out.println("Id not found.");
+        System.out.println("ID not found.");
     }
 
     public static void main(String[] args) {
 
 
         Scanner sc = new Scanner(System.in);
-        ArrayListAssignment a = new ArrayListAssignment();
+        ArrayListAssignment arr = new ArrayListAssignment();
         while(true) {
-            System.out.print("Pick on operation: ");
+            System.out.println("Select operation: ");
             System.out.println("1. Insert \n2. Display\n3. Search\n4. Delete\n5. Update\n6. Exit");
 
             int userResponse = sc.nextInt();
 
             switch(userResponse)
             {
-                case 1: a.insert(sc);
+                case 1: arr.insert(sc);
                     break;
-                case 2: a.display(sc);
+                case 2: arr.display(sc);
                     break;
-                case 3: a.search(sc);
+                case 3: arr.search(sc);
                     break;
-                case 4: a.delete(sc);
+                case 4: arr.delete(sc);
                     break;
-                case 5: a.update(sc);
+                case 5: arr.update(sc);
                     break;
-                case 6: System.out.println("Exit!!");
-                    return;
-                default: System.out.println("SORRY!! The choice you've entered is not valid.");
+                case 6: return; 
+                default: System.out.println("Enter a valid choice");
                     break;
 
             }
